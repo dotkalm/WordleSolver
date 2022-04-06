@@ -2,17 +2,6 @@ import { isType } from "@src/actions"
 import { closeIcon } from "@src/fixtures"
 
 
-export function treeWalker<T>(record: MutationRecord, selector: string): unknown{
-    try{
-        const [ , service ] = window.location.host.split('.')
-        const { addedNodes, removedNodes, target, type } = record
-
-    }catch(err){
-        console.log(err)
-        return undefined
-    }
-}
-
 
 export function inspectTree<T>(
     nodeList: NodeList, 
@@ -25,6 +14,8 @@ export function inspectTree<T>(
                 const { localName } = element
                 if(localName && localName === 'game-icon'){
                     if(element.shadowRoot.innerHTML === closeIcon){
+                        const gameState = JSON.parse(window.localStorage['nyt-wordle-state'])
+                        console.log(gameState)
                         element.click()
                     }
                 }
