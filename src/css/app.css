@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-200;
+}
+.svg-circle{
+    fill:lightgray; 
+    stroke:pink;
+    transition: .15s ease-in;
+    r: 25;
+}
+.svg-dot{
+    fill:gray; 
+    stroke:pink;
+    transition: .5s ease-in;
+    r: 30;
+}
+.svg-dot:hover{
+    fill: purple; 
+    stroke: black;
+    transition: 1s ease-in;
+    r: 40;
+}

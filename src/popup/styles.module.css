@@ -1,0 +1,7 @@
+.popupContainer {
+    min-width: 95%;
+    max-width: 95%;
+    min-height: 100%; 
+    display: flex;
+    overflow-x: hidden; 
+}
