@@ -14,9 +14,8 @@ export function inspectTree<T>(
                 const { localName } = element
                 if(localName && localName === 'game-icon'){
                     if(element.shadowRoot.innerHTML === closeIcon){
-                        const gameState = JSON.parse(window.localStorage['nyt-wordle-state'])
-                        console.log(gameState)
-                        element.click()
+                        const { gameStatus } = JSON.parse(window.localStorage['nyt-wordle-state'])
+                        gameStatus === "IN_PROGRESS" && element.click()
                     }
                 }
                 if(localName && localName === selector){

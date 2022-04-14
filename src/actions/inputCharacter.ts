@@ -11,7 +11,6 @@ export async function inputCharacter(character: string): Promise<void|Error>{
         if(!element) throw new Error('no character element')
         await sleep(1000)
         element.click()
-        console.log(keyboard, element)
         return
     }catch(err: unknown){
         if(err instanceof Error){
