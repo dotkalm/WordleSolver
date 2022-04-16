@@ -1,0 +1,32 @@
+.title{
+    font-size: 2em;
+}
+.author{
+    font-size: 2em;
+}
+.solution{
+    width: 95vw;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px; 
+}
+.correct{
+    background-color: #6aaa64;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25vh;
+    line-height: 5vh;
+    font-weight: bold;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: #ffffff;
+    text-transform: uppercase;
+    user-select: none;
+}
+.correct::before{
+    content: '';
+    display: inline-block;
+    padding-bottom: 100%;
+}

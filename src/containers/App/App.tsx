@@ -1,5 +1,6 @@
 import React, { FC, useState, useCallback, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
+import browser from "webextension-polyfill";
 import { inspectTree, inputCharacter } from "@src/actions"
 
 async function solve(solution: string){
