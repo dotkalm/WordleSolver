@@ -6,9 +6,9 @@ type Props = {
     solution: string;
 }
 export function Solver({solution}:Props){
-    const answer = solution.split('').map((character: string) => {
+    const answer = solution.split('').map((character: string, index: number) => {
         return(
-            <div className={styles.correct}>
+            <div className={styles.correct} key={index}>
                 {character}
             </div>
         )

@@ -12,7 +12,6 @@ browser.tabs.query({ active: true, currentWindow: true }).then((tabs: Tabs.Tab[]
         const { id, url: currentUrl } = tabs[0]
         currentTabId = id || 0;
         const { host, pathname } = new URL(currentUrl || '')
-        console.log({ host, pathname })
         if(host === 'www.nytimes.com' && /games\/wordle/.test(pathname)){
             url = currentUrl || ''
         }
@@ -27,7 +26,8 @@ browser.tabs.query({ active: true, currentWindow: true }).then((tabs: Tabs.Tab[]
                 const data = JSON.parse(json)
                 ReactDOM.render(<Solver solution={data?.solution || ''}/>, document.getElementById("popup"));
             }
-        });
+        })
+        .catch(err => { })
     }else{
         ReactDOM.render(<div>
             this does not appear to be wordle
