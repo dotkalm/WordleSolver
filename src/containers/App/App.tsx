@@ -1,7 +1,5 @@
-import React, { FC, useState, useCallback, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
-import browser from "webextension-polyfill";
-import { inspectTree, inputCharacter } from "@src/actions"
+import React  from "react";
+import { inputCharacter } from "@src/actions"
 
 async function solve(solution: string){
     const letters = solution.split('')
@@ -16,8 +14,6 @@ async function solve(solution: string){
 export function App(){
     const body = document.querySelector<HTMLBodyElement>('body')
     if(!body) throw new Error("no body");
-    const child = body?.children && inspectTree(body.childNodes, 'tile')
-    const gameApp = body?.children && inspectTree(body.childNodes, 'game-app')
 
     let firstChild = body.firstChild as HTMLElement
 

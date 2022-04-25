@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import type { Runtime } from "webextension-polyfill";
+import React from "react";
 import styles from "./Solver.module.css" 
 
 type Props = {

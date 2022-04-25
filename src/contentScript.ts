@@ -4,4 +4,5 @@ import { App } from "@src/containers/App";
 
 window.onload = (event: Event): void => {
     App()
-};
+}; 
+
