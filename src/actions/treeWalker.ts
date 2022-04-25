@@ -7,8 +7,10 @@ export function inspectTree<T>(
     nodeList: NodeList, 
     selector: string, 
     callback: () => void,
+    addElement: boolean,
 ): unknown{
     try{
+        const { gameStatus } = JSON.parse(window.localStorage['nyt-wordle-state'])
         for(const node of Array.from(nodeList)){
             const element = node as HTMLElement 
             if(element.shadowRoot){
@@ -16,15 +18,18 @@ export function inspectTree<T>(
                 if(localName && localName === selector){
                     return node 
                 }
-                const inspectChildren = inspectTree<T>(element.shadowRoot.childNodes, selector, callback)
+                const inspectChildren = inspectTree<T>(element.shadowRoot.childNodes, selector, callback, addElement)
                 if(inspectChildren){
                     const correct = isType<T>(inspectChildren as unknown || undefined)
                     if(correct) return inspectChildren;
                 };
             }
-            if(element.className === 'menu-left'){
+            if(element.className === 'menu-left' && selector === 'nav-icon'){
                 const exists = element.querySelector('#first-try')
-                if(!exists){
+                if(exists && !addElement){
+                    exists.remove()
+                }
+                if(!exists && gameStatus === 'IN_PROGRESS'){
                     const check = document.createElement('button')
                     check.className = 'icon'
                     check.id = 'first-try'
@@ -49,7 +54,7 @@ export function inspectTree<T>(
             }
 
             if(node.hasChildNodes()){
-                const inspectChildren = inspectTree<T>(node.childNodes, selector, callback)
+                const inspectChildren = inspectTree<T>(node.childNodes, selector, callback, addElement)
                 if(inspectChildren){
                     const correct = isType<T>(inspectChildren as unknown || undefined)
                     if(correct) return inspectChildren;

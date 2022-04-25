@@ -16,10 +16,11 @@ export function App(){
     if(!body) throw new Error("no body");
     const { solution, gameStatus } = JSON.parse(window.localStorage['nyt-wordle-state'])
     function clickThing(){
-        gameStatus === 'IN_PROGRESS' && solution && solve(solution)
+        gameStatus === 'IN_PROGRESS' && solution && solve(solution).then(() => {
+            body?.children && inspectTree(body.childNodes, 'nav-icon', clickThing, false)
+        })
     }
-    console.log(gameStatus)
-    const gameApp = body?.children && inspectTree(body.childNodes, 'nav-icon', clickThing)
+    const gameApp = body?.children && inspectTree(body.childNodes, 'nav-icon', clickThing, gameStatus === 'IN_PROGRESS')
     let firstChild = body.firstChild as HTMLElement
 
 }
