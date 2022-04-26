@@ -37,7 +37,7 @@ export function inspectTree<T>(
                     check.style.border = 'solid #6aaa64 3px'
                     check.style.backgroundColor = '#6aaa64'
                     check.style.color = '#fff'
-                    check.style.fontSize = '14px'
+                    check.style.fontSize = '12px'
                     check.style.borderRadius = '.4em'
                     check.style.height = '24px'
                     check.onpointerdown = () => {
